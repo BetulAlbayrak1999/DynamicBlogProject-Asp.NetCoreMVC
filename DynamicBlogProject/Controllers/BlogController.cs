@@ -10,10 +10,17 @@ namespace DynamicBlogProject.Controllers
 {
     public class BlogController : Controller
     {
-        BlogManager BlogManager = new BlogManager(new EFBlogRepository());
+        BlogManager blogManager = new BlogManager(new EFBlogRepository());
         public IActionResult Index()
         {
-            var result = BlogManager.GetAllBlogs();
+            var result = blogManager.GetAllBlogsWithCategory();
+            return View(result);
+        }
+
+        public IActionResult BlogReadAll(int id) 
+        {
+            ViewBag.i = id;
+            var result = blogManager.GetBlogsById(id);
             return View(result);
         }
     }

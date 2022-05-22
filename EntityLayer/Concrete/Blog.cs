@@ -31,6 +31,12 @@ namespace EntityLayer.Concrete
         [ForeignKey(nameof(CategoryId))]
         public virtual Category Category { get; set; }
 
+        public int WriterId { get; set; }
+
+
+        [ForeignKey(nameof(WriterId))]
+        public virtual Writer Writer { get; set; }
+
 
         public List<Comment> Comments { get; set; }
 

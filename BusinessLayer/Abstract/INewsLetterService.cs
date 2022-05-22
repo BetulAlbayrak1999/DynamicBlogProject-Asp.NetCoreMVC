@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace BusinessLayer.Abstract
 {
-    public interface IBlog: IGeneric<Blog>
+    public interface INewsLetterService
     {
-        List<Blog> GetListWithCategory();
+        void AddNewsLetter(NewsLetter newsLetter); 
     }
 }

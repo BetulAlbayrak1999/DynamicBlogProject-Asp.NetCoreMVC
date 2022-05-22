@@ -33,9 +33,24 @@ namespace BusinessLayer.Concrete
             return _blog.GetAll();
         }
 
+        public List<Blog> GetAllBlogsByWriter(int id)
+        {
+            return _blog.GetAll(x=> x.WriterId == id);
+        }
+
+        public List<Blog> GetAllBlogsWithCategory()
+        {
+            return _blog.GetListWithCategory();
+        }
+
         public Blog GetBlogById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Blog> GetBlogsById(int id)
+        {
+            return _blog.GetAll(x => x.Id == id);
         }
 
         public void UpdateBlog(Blog blog)

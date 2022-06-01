@@ -19,11 +19,12 @@ namespace DynamicBlogProject.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult SubscribeMail(NewsLetter newsLetter)
+        public IActionResult SubscribeMail(NewsLetter newsLetter)
         {
             newsLetter.Status = true;
             newsLetterManager.AddNewsLetter(newsLetter);
-            return PartialView();
+
+            return RedirectToRoute(new { controller = "Blog", action = "Index"});
         }
     }
 }

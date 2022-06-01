@@ -19,7 +19,7 @@ namespace BusinessLayer.Concrete
         }
         public void AddComment(Comment comment)
         {
-            throw new NotImplementedException();
+            _comment.Add(comment);
         }
 
         public void DeleteComment(Comment comment)

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,20 @@ namespace DynamicBlogProject.Controllers
             return View();
         }
 
+        [HttpGet]
         public PartialViewResult PartialAddComment() 
         {
             return PartialView();
+        }
+        [HttpPost]
+        public IActionResult PartialAddComment(Comment comment)
+        {
+            comment.CreationDate = DateTime.Parse(DateTime.Now.ToString());
+            comment.Status = true;
+            comment.BlogId = 2;
+            commentManager.AddComment(comment);
+
+            return RedirectToRoute(new { controller = "Blog", action = "BlogReadAll",  Id = comment.BlogId });
         }
 
         public PartialViewResult ListCommentByBlog(int id)

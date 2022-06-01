@@ -57,5 +57,10 @@ namespace BusinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public List<Blog> GetLastThreeBlogs()
+        {
+            return _blog.GetAll().Take(3).ToList();
+        }
     }
 }

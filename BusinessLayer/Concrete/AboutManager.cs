@@ -18,9 +18,29 @@ namespace BusinessLayer.Concrete
             _about = about;
         }
 
-        public List<About> GetAll()
+        public void AddT(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteT(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<About> GetAllTs()
         {
             return _about.GetAll();
+        }
+
+        public About GetTById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateT(About t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

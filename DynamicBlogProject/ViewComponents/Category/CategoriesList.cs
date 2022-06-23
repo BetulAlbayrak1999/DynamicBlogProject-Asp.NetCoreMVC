@@ -14,7 +14,7 @@ namespace DynamicBlogProject.ViewComponents.Category
 
         public IViewComponentResult Invoke()
         {
-            var result = categoryManager.GetAllCategories();
+            var result = categoryManager.GetAllTs();
             return View(result);
         }
     }

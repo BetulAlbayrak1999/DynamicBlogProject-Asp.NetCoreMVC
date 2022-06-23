@@ -13,7 +13,7 @@ namespace DynamicBlogProject.Controllers
         AboutManager aboutManager = new AboutManager(new EFAboutRepository());
         public IActionResult Index()
         {
-            var result = aboutManager.GetAll();
+            var result = aboutManager.GetAllTs();
             return View(result);
         }
 

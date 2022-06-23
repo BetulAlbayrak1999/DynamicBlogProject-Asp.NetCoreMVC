@@ -13,7 +13,7 @@ namespace DynamicBlogProject.Controllers
         CategoryManager categoryManager = new CategoryManager(new EFCategoryRepository());
         public IActionResult Index()
         {
-            var result = categoryManager.GetAllCategories();
+            var result = categoryManager.GetAllTs();
 
             return View(result);
         }

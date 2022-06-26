@@ -19,13 +19,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Id</td>
+            <th>@item.Id</th>
             <td>@item.Title</td>
-            <td>@item.CreationDate</td>
-            <td>@item.CategoryId</td>
+            <td>@(((DateTime)item.CreationDate).ToString("dd/MMM/yyyy"))</td>
+            <td>@item.Category.Name</td>
             <td>@item.Status</td>
-            <td><a href="#" class="btn btn-danger">Delete</a></td>
-            <td><a href="#" class="btn btn-warning">Update</a></td>
+            <td><a href="/Blog/DeleteBlog/@item.Id" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Blog/EditBlog/@item.Id" class="btn btn-warning">Update</a></td>
         </tr>
     }
     <a href="#" class="btn btn-primary">Create Blog</a>

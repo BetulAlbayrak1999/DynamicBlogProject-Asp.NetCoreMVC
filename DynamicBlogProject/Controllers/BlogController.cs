@@ -5,6 +5,7 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +33,21 @@ namespace DynamicBlogProject.Controllers
 
         public IActionResult BlogListByWriter()
         {
-            var values = blogManager.GetAllBlogsByWriter(1);
+            var values = blogManager.GetListWithCategoryByWriter(1);
             return View(values);
         }
 
         [HttpGet]
         public IActionResult AddBlog()
         {
+            CategoryManager categoryManager = new CategoryManager(new EFCategoryRepository());
+            List<SelectListItem> categoryValues = (from x in categoryManager.GetAllTs()
+                                                   select new SelectListItem 
+                                                   {
+                                                       Text= x.Name,
+                                                       Value= x.Id.ToString()
+                                                   }).ToList();
+            ViewBag.categoryValues = categoryValues;
             return View();
         }
 
@@ -63,7 +72,26 @@ namespace DynamicBlogProject.Controllers
                 }
             }
             return View();
+
+        }
+        public IActionResult DeleteBlog(int id) 
+        {
+            var blogValue = blogManager.GetTById(id);
+            blogManager.DeleteT(blogValue);
+            return RedirectToAction("BlogListByWriter");
         }
 
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            var blogVlaue = blogManager.GetTById(id);
+            return View(blogVlaue);
+        }
+
+        [HttpPost]
+        public IActionResult EditBlog(Blog blog)
+        {
+            return RedirectToAction("BlogListByWriter");
+        }
     }
 }

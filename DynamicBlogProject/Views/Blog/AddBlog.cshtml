@@ -20,7 +20,7 @@
     @Html.TextBoxFor(x => x.ThumbNailImage, new { @class = "form-control" })
     <br />
     @Html.Label("Category")
-    @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+    @Html.DropDownListFor(x=> x.CategoryId, (List<SelectListItem>)ViewBag.categoryValues, new { @class="form-control"})
     <br />
     @Html.Label("Content")
     @Html.TextAreaFor(x => x.Content, 10, 3, new { @class = "form-control" })
